@@ -22,6 +22,7 @@ changey = 200
 #hiện screen:
 run = True
 while run:
+    clock.tick(60)
     #tạo sự kiện tắt screen:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -30,25 +31,25 @@ while run:
     if event.type == pygame.KEYDOWN:
        if event.key == pygame.K_DOWN:
             down = down + 1
-            changey = changey + 3
+            changey +=  3
             up = 0
             left = 0
             right = 0
        elif event.key == pygame.K_UP:
             up = up + 1
-            changey = changey - 3
+            changey -=  3
             down = 0
             left = 0
             right = 0
        elif event.key == pygame.K_LEFT:
             left = left + 1
-            changex = changex - 3
+            changex -=  3
             down= 0
             up = 0
             right =0
        elif event.key == pygame.K_RIGHT:
             right = right + 1
-            changex = changex + 3
+            changex += 3
             up = 0
             down =0
             left = 0
@@ -56,7 +57,8 @@ while run:
     #tạo backgroud:
     gachx = 0
     gachy = 0
-    while gachx < 750:
+    maxgachx = 760
+    while gachx < maxgachx:
         iteam.showiteam(iteam("map/nengach.png").iteams, gachx, gachy)
         gachx = gachx + 30
         if gachx >= 740:
@@ -66,11 +68,13 @@ while run:
             break
     #tạo nhà:
     nhax = 0
-    while nhax < 350:
+    maxnhax = 350
+    while nhax < maxnhax:
         iteam.showiteam(iteam("map/house.png").iteams, nhax,0)
         nhax += 100
     nhax = 0
-    while nhax < 350:
+    maxnhax = 350
+    while nhax < maxnhax:
         iteam.showiteam(iteam("map/house1.png").iteams, nhax,100)
         nhax +=100
 #di chuyển nhân vật:
@@ -115,7 +119,7 @@ while run:
         iteam.showiteam(iteam("nhanvat/right4.png").iteams, changex, changey)
         right = 1
 #tỉ lệ khung hình:
-    clock.tick(60)
+
     pygame.display.update()
 pygame.quit()
 
